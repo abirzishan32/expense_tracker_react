@@ -6,14 +6,25 @@ const Balance = () => {
   const [income, setIncome] = React.useState(0);
   const [expense, setExpense] = React.useState(0);
 
+  const onIncome = (amount) => {
+    setIncome(income + amount);
+    setBalance(balance + amount);
+  }
+
+  const onExpense = (amount) => {
+    setExpense(expense + amount);
+    setBalance(balance - amount);
+  }
+
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-blue-200 text-gray-800">
-      {/* Header */}
+
       <header className="bg-blue-600 text-white py-4 shadow-md">
         <h1 className="text-3xl font-bold text-center">My Financial Dashboard</h1>
       </header>
 
-      {/* Main Content */}
+
       <main className="flex-grow flex flex-col items-center justify-center gap-6 p-6">
         <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
           <p className="text-3xl font-bold text-gray-800 text-center mb-4">
@@ -44,7 +55,7 @@ const Balance = () => {
           </div>
 
           <div className="mt-8">
-            <TransactionMenu />
+            <TransactionMenu onIncome = {onIncome} onExpense = {onExpense} />
           </div>
         </div>
       </main>
