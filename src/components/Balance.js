@@ -2,9 +2,22 @@ import React from 'react';
 import TransactionMenu from './TransactionMenu';
 
 const Balance = () => {
-  const [balance, setBalance] = React.useState(0);
-  const [income, setIncome] = React.useState(0);
-  const [expense, setExpense] = React.useState(0);
+
+
+  /* These are Update States
+  To update our state, we use our state updater function.
+ */
+
+  const [balance, setBalance] = React.useState(0); // Represents the total balance
+  const [income, setIncome] = React.useState(0); // Represents the total income
+  const [expense, setExpense] = React.useState(0); // Represents the total expense
+
+
+  /* These are Event Handlers/
+Two functions, onIncome and onExpense, are defined to update the state when a transaction is made:
+1. onIncome: Increases the income and balance by the specified amount.
+2. onExpense: Increases the expense and decreases the balance by the specified amount.
+  */
 
   const onIncome = (amount) => {
     setIncome(income + amount);
@@ -21,7 +34,7 @@ const Balance = () => {
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-blue-200 text-gray-800">
 
       <header className="bg-blue-600 text-white py-4 shadow-md">
-        <h1 className="text-3xl font-bold text-center">My Financial Dashboard</h1>
+        <h1 className="text-3xl font-bold text-center">Expense Tracker</h1>
       </header>
 
 
@@ -54,15 +67,21 @@ const Balance = () => {
             </div>
           </div>
 
+          {/* 
+          A TransactionMenu component that handles adding transaction.
+          The TransactionMenu component is passed the onIncome and onExpense handlers as props.
+          Props are arguments passed into React components.
+          Props are passed to components via HTML attributes. */}
+          
           <div className="mt-8">
             <TransactionMenu onIncome = {onIncome} onExpense = {onExpense} />
           </div>
         </div>
       </main>
 
-      {/* Footer */}
+
       <footer className="bg-blue-600 text-white py-4 text-center shadow-md">
-        <p>&copy; 2024 My Financial App. All rights reserved.</p>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
       </footer>
     </div>
   );
